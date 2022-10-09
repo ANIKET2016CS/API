@@ -1,0 +1,20 @@
+const express = require("express");
+require("./db/conn")
+const Student = require("./models/students")
+
+const studentRouter = require("./routers/student")
+
+const app = express();
+const port = process.env.PORT || 8000;
+
+// app.get("/", (req,res) => {
+//     res.send("Hello from the other sides by Aniket");
+// })
+
+app.use(express.json());
+app.use(studentRouter);
+
+
+app.listen(port, () => {
+    console.log(`connection is setup at: ${port}`);
+})
